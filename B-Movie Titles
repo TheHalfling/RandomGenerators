@@ -1,0 +1,76 @@
+<?php
+
+	//Part one of the movie name
+        $list1 = ["The Revenge of ", "The Return to ", "The Attack of ", "Big Ass ", "Explosion of ", "The Last ", "Nuclear ", "Death by ", "Children of ", "", "", "", "", "", "", "", ""]; 
+        
+        //Part two of the movie name
+	$list2 = ["Shark", "Piranha", "Arachna", "Ice", "Viper", "Gator", "Fire", "Robo", 
+	"Demon", "Dino", "Goblin", "Orc", "Ghost", "Giant", "Undead", "Reptile", "Zombie"];
+				
+	//Part three of the movie name
+	$list3 = ["-nado", "-quake", "-mageddon", "-alanche", "-typhoon", "-storm", "-planet", 
+	"-horror", "-island", "-swarm", "-panic", "-swamp", "-aggadon"];
+
+        //Part four of the movie name
+        $list4 = [" Part II", " Part III", " Part IV", " 2", " 3", " 4", " 3-D ", " from Outer Space", " from Dimension X", "", "", "", "", "", "", ""];
+        
+        //Add in sub-title lists here - also need to redo the table to show them under the title in smaller font
+
+	$num_of_resp = 0;
+
+	//check for post of form
+
+	if (isset($_POST['submit'])){
+		$num_of_resp = htmlspecialchars($_POST['num_of_resp']);
+		
+		//check for number of responses that are desired
+		}
+		shuffle($list1);
+		shuffle($list2);
+                shuffle($list3);
+                shuffle($list4);
+			
+?>
+
+<h3>B Movie Titles</h3>
+<p>Last Updated April 8, 2017</p>
+
+<p>This page generates random, cheesy, B-Movie titles.  It is based off of the retrospective
+of B-Movie Roleplaying games posted on <a href="http://savageafterworld.blogspot.com/" 
+target=_blank">The Savage Afterworld</a>.  Here is the link to the original post:
+<a href="http://savageafterworld.blogspot.com/2013/12/obsolete-simulations-roundup-it-came.html" 
+target="_blank">[Obsolete Simulations Roundup] "It Came From The Late, Late, Late Show" -- A Retrospective Of B-Movie Roleplaying </a></p>
+
+<br>
+<form action='' method='POST'>
+	<fieldset>
+		<!-- Add a field for number of responses -->
+		<legend><h3>Number of Results (1-5):</h3></legend>
+		<input type="number" name="num_of_resp" min = 1 max = 5
+		value = <?php if(isset($_POST['num_of_resp'])) echo htmlentities($_POST['num_of_resp']);
+				?> required >
+	</fieldset>
+	<br>
+	<!-- button for submit -->
+		<input type='submit' value = 'Submit' name='submit'>
+</form>
+<fieldset>
+
+<table>
+        <tr>
+	<th><h5>B Movie Titles</h5></th>
+        </tr>
+<!-- create a row for each entry -->
+<?php
+
+	$i = 0;
+	while ($i < $num_of_resp) {
+		echo "<tr>";
+		echo "<td> $list1[$i]$list2[$i]$list3[$i]$list4[$i] </td>";
+		echo "</tr>";
+		$i++;
+	}
+?>
+
+</table>
+</fieldset>
