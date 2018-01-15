@@ -1,0 +1,232 @@
+<body>
+	<!-- Establish all of the lists from the various sets for use later. Also create blank set top
+	to store the active list in. -->
+	
+	<?php
+		// define variables and set values
+			$core_set = $awesome_level_9000 = $the_obligatory_cthulhu_set = '';
+			$science_fiction_double_feature = $the_big_geeky_box = $monster_smash = '';
+			$pretty_pretty_smash_up = $smash_up_munchkin  = $its_your_fault = '';
+			$cease_and_desist = $what_were_we_thinking =  $num_players = '';
+		
+			$master_deck_list = array(
+				'core_set' => array('Aliens', 'Dinosaurs', 'Ninjas', 'Pirates', 'Robots', 
+				'Tricksters', 'Wizards', 'Zombies'), 
+				
+				'awesome_level_9000' => array('Bear Cavalry', 'Ghosts', 'Killer Plants', 
+				'Steampunks'),
+				
+				'the_obligatory_cthulhu_set' => array('Elder Things', 'Innsmouth', 
+				'Minions of Cthulhu', 'Miskatonic University'),
+				
+				'science_fiction_double_feature' => array('Cyborg Apes', 'Shapeshifters', 
+				'Super Spies', 'Time Travelers'),
+				
+				'the_big_geeky_box' => array('Geeks'),
+				
+				'monster_smash' => array('Giant Ants', 'Mad Scientists', 'Vampires', 'Werewolves'),
+				
+				'pretty_pretty_smash_up' => array('Fairies', 'Kitty Cats', 'Mythic Horses', 
+				'Princesses'),
+				
+				'smash_up_munchkin' => array('Clerics', 'Dwarves', 'Elves', 'Halflings', 'Mages', 
+				'Orcs', 'Thieves', 'Warriors'),
+				
+				'its_your_fault' => array('Dragons', 'Mythic Greeks', 'Sharks', 'Superheroes', 
+				'Tornadoes'),
+				
+				'cease_and_desist' => array('Star Roamers', 'Astro Knights', 'Changerbots', 
+				'Ignobles'),
+
+                'what_were_we_thinking' => array('Teddybears', 'Grandmas', 'Rock Stars', 'Explorers'),
+				
+				'all_stars_event_kit' => array('Smash Up All Stars'),
+				
+				'big_in_japan' => array('Itty Critters', 'Kaiju', 'Magical Girls', 'Mega Troopers'),
+				
+
+				'sheep_promotion' => array('Sheep'),
+				
+				'that_70s_expansion' => array('Disco Dancer', 'Kung Fu Fighters', 'Truckers', 'Vigilantes')
+				//Upcoming sets - commented out for now
+				//'oops_you_did_it_again' => array('Egypt', 'Vikings', 'Cowboys', 'Samurai'),
+				
+				);
+	
+			
+			$expansion_list = array();
+			
+			$deck_list = array();
+			
+			$game_list = array();
+
+		//Bring in results of form and create list of expansions used
+		if (isset($_POST['submit'])){
+			$num_players = htmlspecialchars($_POST['player_count']);
+			if(!empty($_POST['checklist'])){
+				foreach($_POST['checklist'] as &$selected){
+					array_push($expansion_list, $selected);
+				}
+				}
+			}
+		//Pull deck list together from selected expansions
+		if (!empty($expansion_list)) {
+			foreach ($expansion_list as $value) {
+				$tmp = ($master_deck_list[$value]);
+				foreach ($tmp as $deck){	
+				array_push($deck_list, $deck);	
+				}	
+				}
+			}
+		//Shuffle the deck list as a means to randomize			
+		shuffle($deck_list);
+			
+		?>
+		
+	<!-- Create check boxes to select which expansions the group has available -->
+	
+	<h1>Smash Up Random Combo Generator</h1>
+	<form action= '' method='POST'>
+		<fieldset>
+			<legend><h2>Select the sets you are using:</h2></legend>
+
+			<ul class="checkbox-grid">			
+			<li><input type='checkbox' name='checklist[core_set]' tabindex=1
+			value = 'core_set' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('core_set', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Core Set<br></li>
+
+			<li><input type='checkbox' name='checklist[awesome_level_9000]' tabindex=2
+			value = 'awesome_level_9000' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('awesome_level_9000', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Awesome Level 9000<br></li>
+
+			<li><input type='checkbox' name='checklist[the_obligatory_cthulhu_set]' tabindex=3
+			value = 'the_obligatory_cthulhu_set' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('the_obligatory_cthulhu_set', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> The Obligatory Cthulhu Set<br></li>	
+							
+							
+			<li><input type='checkbox'name='checklist[science_fiction_double_feature]' tabindex=4
+			value = 'science_fiction_double_feature' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('science_fiction_double_feature', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Science Fiction Double Feature<br></li>
+							
+			<li><input type='checkbox' name='checklist[the_big_geeky_box]' tabindex=5
+			value = 'the_big_geeky_box' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('the_big_geeky_box', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> The Big Geeky Box<br></li>
+							
+			<li><input type='checkbox' name='checklist[monster_smash]' tabindex=6
+			value = 'monster_smash' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('monster_smash', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Monster Smash<br></li>
+							
+			<li><input type='checkbox' name='checklist[pretty_pretty_smash_up]' tabindex=7
+			value = 'pretty_pretty_smash_up' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('pretty_pretty_smash_up', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Pretty Pretty Smash Up<br></li>
+							
+			<li><input type='checkbox' name='checklist[smash_up_munchkin]' tabindex=8
+			value = 'smash_up_munchkin' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('smash_up_munchkin', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Smash Up Munchkin<br></li>
+							
+			<li><input type='checkbox' name='checklist[its_your_fault]' tabindex=9
+			value = 'its_your_fault' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('its_your_fault', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Its Your Fault<br></li>
+							
+			<li><input type='checkbox' name='checklist[cease_and_desist]' tabindex=10
+			value = 'cease_and_desist' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('cease_and_desist', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Cease and Desist<br></li>
+
+            <li><input type='checkbox' name='checklist[what_were_we_thinking]' tabindex=11
+			value = 'what_were_we_thinking' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('what_were_we_thinking', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> What Were We Thinking<br></li>
+            <li><input type='checkbox' name='checklist[all_stars_event_kit]' tabindex=12
+			value = 'all_stars_event_kit' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('all_stars_event_kit', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> All Stars Event Kit<br></li>
+            <li><input type='checkbox' name='checklist[big_in_japan]' tabindex=13
+			value = 'big_in_japan' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('big_in_japan', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Big in Japan<br></li>		
+            <li><input type='checkbox' name='checklist[that_70s_expansion]' tabindex=14
+			value = 'that_70s_expansion' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('that_70s_expansion', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> That 70s Expansion<br></li>	
+            <li><input type='checkbox' name='checklist[sheep_promotion]' tabindex=15
+			value = 'sheep_promotion' <?php if(isset($_POST['checklist']) && 
+							is_array($_POST['checklist']) && 
+							in_array('sheep_promotion', $_POST['checklist'])) 
+							echo 'checked="checked"'; ?> /> Sheep Promotion<br></li>	
+				
+</ul>
+							
+		</fieldset>
+		
+		<!-- Get input of number of players in the game -->
+		<fieldset>
+			<legend><h2>Number of players:</h2></legend>
+			<input type='number' name='player_count' min='3' max='10' tabindex=11
+			value = <?php if(isset($_POST['player_count'])) echo htmlentities($_POST['player_count']); ?> required >
+		</fieldset>
+		
+		<!-- Submit and reset buttons -->
+		<fieldset>
+                        <ul class="button-grid">	
+                        <li>
+			<input type='submit' value = 'Submit' name='submit'>
+                        </li>
+                        <li>
+			<input type='reset'>
+                        </li>
+                        </ul>
+		</fieldset>
+	
+	<!-- Results Table -->
+	</form>
+	<fieldset>
+		<table>
+			<tr>
+				<th>Player #</th>
+				<th>Deck #1</th>
+				<th>Deck #2</th>
+			</tr>
+			<!-- Iterative table using shuffled deck list as means to randomize -->
+			<?php
+				$p = 1;
+				$i = 1;
+				$j = 0;
+				while ($p <= $num_players) {
+					echo "<tr>";
+					echo "<td> Player $p </td>";
+					echo "<td> $deck_list[$j] </td>";
+					echo "<td> $deck_list[$i] </td>";
+					echo "</tr>";
+					$p++;
+					$i+=2; 
+					$j+=2;	
+				}	
+			?>
+			
+		</table>
+	</fieldset>
+</body>
