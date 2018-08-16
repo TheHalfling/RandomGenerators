@@ -1,18 +1,18 @@
 <?php
 
 	//Part one of the movie name
-        $list1 = ["The Revenge of ", "The Return to ", "The Attack of ", "Big Ass ", "Explosion of ", "The Last ", "Nuclear ", "Death by ", "Children of ", "", "", "", "", "", "", "", ""]; 
+        $list1 = ["The Revenge of ", "The Return to ", "Attack of the ", "Big Ass ", "Explosion of the ", "The Last ", "Nuclear ", "Death by ", "Children of the ", "One More ", "The Ghost of ", "Night of the ", "The Lord of the ", "The Legend of ", "The Return of ", "The Lost ", "", "",  "", "", "", "", "", "", "", ""]; 
         
         //Part two of the movie name
-	$list2 = ["Shark", "Piranha", "Arachna", "Ice", "Viper", "Gator", "Fire", "Robo", 
-	"Demon", "Dino", "Goblin", "Orc", "Ghost", "Giant", "Undead", "Reptile", "Zombie"];
+	$list2 = ["Shark", "Piranha", "Arachnid", "Ice", "Viper", "Gator", "Fire", "Robo", "Dragon", "Mutant",
+	"Demon", "Dino", "Goblin", "Orc", "Ghost", "Giant", "Undead", "Reptile", "Zombie", "Haunt", "Poltergeist", "Vampire", "Amazon Women", "Martians", "Grays", "Mole People"];
 				
 	//Part three of the movie name
-	$list3 = ["-nado", "-quake", "-mageddon", "-alanche", "-typhoon", "-storm", "-planet", 
-	"-horror", "-island", "-swarm", "-panic", "-swamp", "-aggadon"];
+	$list3 = ["-nado", " Quake", "-mageddon", "-alanche", " Typhoon", " Storm", " Planet", 
+	" Horror", " Island", " Swarm", " Panic", "-swamp", "-aggadon", " Temple"];
 
         //Part four of the movie name
-        $list4 = [" Part II", " Part III", " Part IV", " 2", " 3", " 4", " 3-D ", " from Outer Space", " from Dimension X", "", "", "", "", "", "", ""];
+        $list4 = [" Part II", " Part III", " Part IV", " 2", " 3", " 4", " 3-D ", " from Outer Space", " from Dimension X", " from Antiquity", " in Color", " in Colour", "", "", "", "", "", "", "", "", ""];
         
         //Add in sub-title lists here - also need to redo the table to show them under the title in smaller font
 
@@ -33,7 +33,7 @@
 ?>
 
 <h3>B Movie Titles</h3>
-<p>Last Updated April 8, 2017</p>
+<p>Last Updated July 21, 2018</p>
 
 <p>This page generates random, cheesy, B-Movie titles.  It is based off of the retrospective
 of B-Movie Roleplaying games posted on <a href="http://savageafterworld.blogspot.com/" 
@@ -45,8 +45,8 @@ target="_blank">[Obsolete Simulations Roundup] "It Came From The Late, Late, Lat
 <form action='' method='POST'>
 	<fieldset>
 		<!-- Add a field for number of responses -->
-		<legend><h3>Number of Results (1-5):</h3></legend>
-		<input type="number" name="num_of_resp" min = 1 max = 5
+		<legend><h3>Number of Results (1-10):</h3></legend>
+		<input type="number" name="num_of_resp" min = 1 max = 10
 		value = <?php if(isset($_POST['num_of_resp'])) echo htmlentities($_POST['num_of_resp']);
 				?> required >
 	</fieldset>
@@ -74,3 +74,4 @@ target="_blank">[Obsolete Simulations Roundup] "It Came From The Late, Late, Lat
 
 </table>
 </fieldset>
+<p>Any match to an actual movie title is purely accidental.  If you do use one of these for a book or movie a mention in the credits would be appreciated.</p>
